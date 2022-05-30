@@ -9,7 +9,7 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  baseUrl: string = "http://joanoceguera-001-site1.btempurl.com/api/Adviser/";
+  baseUrl: string = "https://localhost:44332/api/Adviser/";
   
   getConsultores ()
   {

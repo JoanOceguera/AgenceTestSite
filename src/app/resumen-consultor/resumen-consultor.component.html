@@ -1,1 +1,64 @@
+<br />
+<div *ngFor="let resumenConsultor of resumenConsultores">
+
+    <h3>{{resumenConsultor.no_usuario}}</h3>
+    <table class="table table-hover table-striped">
+        <tbody>
+            <tr>
+                <td>
+                    <div><strong>Período</strong></div>
+                </td>
+                <td>
+                    <div><strong>Ganancia </strong></div>
+                </td>
+                <td>
+                    <div><strong>Costo fijo </strong></div>
+                </td>
+                <td>
+                    <div><strong>Comisión</strong></div>
+                </td>
+                <td>
+                    <div><strong>Lucro</strong></div>
+                </td>
+            </tr>
+            <tr *ngFor="let periodo of resumenConsultor.operationsSummary  | keyvalue">
+                <td>
+                    <div>{{periodo.key}}</div>
+                </td>
+                <td>
+                    <div>{{periodo.value | currency:'BRL':'symbol':'1.2-2':'pt'}}</div>
+                </td>
+                <td>
+                    <div>{{resumenConsultor.fixed_cost | currency:'BRL':'symbol':'1.2-2':'pt'}}</div>
+                </td>
+                <td>
+                    <div>{{resumenConsultor.commissions.get(periodo.key) | currency:'BRL':'symbol':'1.2-2':'pt'}}</div>
+                </td>
+                <td>
+                    <div>{{lucro(periodo.value, resumenConsultor.fixed_cost, resumenConsultor.commissions.get(periodo.key)) | currency:'BRL':'symbol':'1.2-2':'pt'}}</div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Saldo
+                </td>
+                <td>
+                    {{totalGanancia(resumenConsultor.operationsSummary) | currency:'BRL':'symbol':'1.2-2':'pt'}}
+                </td>
+                <td>
+                    {{totalCostoFijo(resumenConsultor.fixed_cost, resumenConsultor.operationsSummary.size) | currency:'BRL':'symbol':'1.2-2':'pt'}}
+                </td>
+                <td>
+                    {{totalComision(resumenConsultor.commissions) | currency:'BRL':'symbol':'1.2-2':'pt'}}
+                </td>
+                <td>
+                    {{totalGanancia(resumenConsultor.operationsSummary) - totalCostoFijo(resumenConsultor.fixed_cost, resumenConsultor.operationsSummary.size) - 
+                    totalComision(resumenConsultor.commissions) | currency:'BRL':'symbol':'1.2-2':'pt' }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
 

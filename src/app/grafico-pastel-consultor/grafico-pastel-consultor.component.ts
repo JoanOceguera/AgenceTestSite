@@ -12,7 +12,7 @@ export class GraficoPastelConsultorComponent implements OnInit {
 
   ngOnInit (): void
   {
-    console.log(this.resumenConsultores);
+    
   }
 
 }

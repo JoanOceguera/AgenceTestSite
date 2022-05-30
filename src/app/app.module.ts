@@ -26,9 +26,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTabsModule } from '@angular/material/tabs'; 
+import { CurrencyPipe } from '@angular/common';
 import { MomentDateModule } from '@angular/material-moment-adapter';
-import {MatTabsModule} from '@angular/material/tabs'; 
+import {MatTooltipModule} from '@angular/material/tooltip';
 
  
 
@@ -62,10 +65,12 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatRadioModule,
     MatNativeDateModule,
     HttpClientModule,
-    MomentDateModule, 
-    MatTabsModule    
+    MatTabsModule,
+    MatIconModule,
+    MomentDateModule,
+    MatTooltipModule
   ],
-  providers: [ApiService, {provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS}],
+  providers: [ApiService, {provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS}, CurrencyPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

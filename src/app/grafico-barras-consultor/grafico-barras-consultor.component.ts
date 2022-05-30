@@ -12,7 +12,7 @@ export class GraficoBarrasConsultorComponent implements OnInit {
 
   ngOnInit (): void
   {
-    console.log(this.resumenConsultores);
+    
   }
 
 }
