@@ -1,0 +1,24 @@
+.consultor-form {
+    margin-top: 5%;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-bottom: 5%;
+}
+
+.consultor-field {
+    width: 60%;
+    margin-top: 5%;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-bottom: 5%;
+}
+
+.add-button-div {
+    display: flex;
+    justify-content: center;
+}
+
+.add-form-btn {
+    position: relative;
+    margin-left: 5%;
+}

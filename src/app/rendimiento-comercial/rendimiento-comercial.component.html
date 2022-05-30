@@ -1,0 +1,38 @@
+<mat-card>
+    <h1>Por consultor</h1>
+    <form [formGroup]="consultoresForm" class="consultor-form">
+        <mat-form-field appearance="fill" class="consultor-field" color="primary">
+            <mat-label>Consultores</mat-label>
+            <mat-select formControlName="consultores" multiple>
+                <mat-option *ngFor="let adviser of consultorList" [value] = adviser.coUsuario>
+                    {{adviser.noUsuario}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="consultor-field" color="primary" appearance="fill">
+            <mat-label>Fechas</mat-label>
+            <mat-date-range-input [formGroup]="consultoresForm" [rangePicker]="picker">
+                <input matStartDate formControlName="fechaInicio" placeholder="Fecha inicio">
+                <input matEndDate formControlName="fechaFin" placeholder="Fecha fin">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker>
+                <mat-datepicker-actions>
+                    <button mat-raised-button matDatepickerApply color="primary">Apply</button>
+                    <button mat-button matDatepickerCancel>Cancel</button>
+                </mat-datepicker-actions>
+            </mat-date-range-picker>
+        </mat-form-field>       
+
+        <div class="add-device-fiel add-button-div">
+            <button mat-raised-button color="accent" class="add-form-btn" (click)="resumenConsultor()" [disabled]="!consultoresForm.valid">Resumen</button>
+            <button mat-raised-button color="accent" class="button-right add-form-btn" (click)="graficoBarras()" [disabled]="!consultoresForm.valid">Gráfico barras</button>
+            <button mat-raised-button color="accent" class="button-right add-form-btn" (click)="graficoPastel()" [disabled]="!consultoresForm.valid">Gráfico pastel</button>
+        </div>
+    </form>
+</mat-card>
+
+<app-resumen-consultor id="DatosConsultores" *ngIf="showResumenConsultor" [resumenConsultores]="consultorResumen"></app-resumen-consultor>
+<app-grafico-barras-consultor id="GraficoBarras" *ngIf="showGraficoBarrasConsultor" [resumenConsultores]="consultorResumen"></app-grafico-barras-consultor>
+<app-grafico-pastel-consultor id="GraficoPastel" *ngIf="showGraficoPastelConsultor" [resumenConsultores]="consultorResumen"></app-grafico-pastel-consultor>
