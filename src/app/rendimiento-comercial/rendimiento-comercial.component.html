@@ -4,7 +4,7 @@
             <form [formGroup]="consultoresForm" class="consultor-form">
                 <mat-form-field appearance="fill" class="consultor-field" color="primary">
                     <mat-label>Consultores</mat-label>
-                    <mat-select formControlName="consultores" multiple>
+                    <mat-select formControlName="consultores" multiple (click)="cargarDatos()">
                         <mat-option *ngFor="let adviser of consultorList" [value]=adviser.coUsuario>
                             {{adviser.noUsuario}}
                         </mat-option>

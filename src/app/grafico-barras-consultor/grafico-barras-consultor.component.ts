@@ -19,7 +19,13 @@ export class GraficoBarrasConsultorComponent implements OnInit
 
   public barChartOptions = {
     scaleShowVerticalLines: false,
-    responsive: true
+    responsive: true,
+    plugins: {
+      title: {
+        display: true,
+        text: 'Resumen de ganancias de los consultores'
+      }
+    }
   };
   public barChartLabels: string[] = [];
   public barChartType: ChartType = 'bar';
@@ -74,6 +80,13 @@ export class GraficoBarrasConsultorComponent implements OnInit
     });
     this.barChartData.push({
       data: dataforMedia, label: 'Costo fijo medio', type: 'line',
+      borderColor: 'black',
+      backgroundColor: 'rgba(123,31,162,0.70)',
+      pointBackgroundColor: 'rgba(148,159,177,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(148,159,177,0.8)',
+      fill: 'origin'
     });
   }
 

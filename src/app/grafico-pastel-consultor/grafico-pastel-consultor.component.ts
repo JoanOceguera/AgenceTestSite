@@ -19,7 +19,7 @@ export class GraficoPastelConsultorComponent implements OnInit
   public pieChartLabels: string[] = [];
   public pieChartType: ChartType = 'pie';
   public pieChartLegend = true;
-  public pieChartData: ChartDataset[] = [];
+  public pieChartData: number[] = [];
   public gananciaTotal = 0;
 
   ngOnInit (): void
@@ -35,16 +35,32 @@ export class GraficoPastelConsultorComponent implements OnInit
       }
 
       this.pieChartLabels.push(resumen.no_usuario);
-      this.pieChartData.push({
-        data: [gananciaParcial], label: resumen.no_usuario,
-      });
+      this.pieChartData.push(gananciaParcial);
     });
     this.pieChartData.forEach((data) =>
     {
-      var valor: any = data.data[0];
-      data.data = [valor / this.gananciaTotal * 100];
+      var indice = this.pieChartData.indexOf(data);
+      this.pieChartData[indice] = (data / this.gananciaTotal) * 100;
     });
 
+    new Chart("graficoPastel", {
+      type: 'pie',
+      data: {
+        labels: this.pieChartLabels,
+        datasets: [{
+          data: this.pieChartData,
+          hoverOffset: 4
+        }]
+      },
+      options: {
+        plugins: {
+          title: {
+            display: true,
+            text: '% de ganancia de los consultores',
+            fullSize: true
+          }
+        }
+      }
+    });
   }
-
 };

@@ -34,9 +34,6 @@ import { MomentDateModule } from '@angular/material-moment-adapter';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgChartsModule } from 'ng2-charts';
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
