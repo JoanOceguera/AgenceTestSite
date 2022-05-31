@@ -1,0 +1,6 @@
+{
+"/api": {
+"target": "http://joanoceguera-001-site1.btempurl.com/api/Adviser/",
+"secure": false
+}
+}
