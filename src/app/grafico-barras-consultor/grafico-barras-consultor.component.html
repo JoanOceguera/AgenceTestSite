@@ -1,1 +1,9 @@
-<p>grafico-barras-consultor works!</p>
+<div id="divChart" class="div-Chart">
+    <canvas id="graficoBarras" width="400" height="400"
+            baseChart
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [type]="barChartType"></canvas>
+</div>
